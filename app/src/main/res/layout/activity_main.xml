@@ -8,7 +8,7 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    // Made for 6.2 display 1280x2340, not responsive!
+    // Made for 6.2 display 1280x2340, ToDo responsive design
 
     <!-- Latitude ROW-->
     <TableRow
