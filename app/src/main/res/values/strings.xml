@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">GpsService Dev. Ver. Yavor Kolev</string>
+    <string name="latitude">Latitude:</string>
+    <string name="longitude">Longitude:</string>
+    <string name="distance">Distance trip:</string>
+    <string name="distanceTotal">Total:</string>
+    <string name="speed">Speed:</string>
+    <string name="maxSpeed">Speed max trip:</string>
+    <string name="maxSpeedTotal">Speed max total:</string>
+    <string name="altitude">Altitude:</string>
+    <string name="minAltitude">Min:</string>
+    <string name="maxAltitude">Max:</string>
+    <string name="minAltitudeTotal">Total:</string>
+    <string name="maxAltitudeTotal">Total:</string>
+    <string name="START_gps_service">START</string>
+    <string name="StopExit_gps_service">EXIT</string>
+</resources>

@@ -1,0 +1,45 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "862fa83fae62f9dabc9a7ba3785d402d",
+    "entities": [
+      {
+        "tableName": "altitudeMinTbl",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`altitudeMin_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `altitude_min_content` TEXT, `date` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "altitudeMin_id",
+            "columnName": "altitudeMin_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "altitudeMinTotal",
+            "columnName": "altitude_min_content",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "altitudeMin_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"862fa83fae62f9dabc9a7ba3785d402d\")"
+    ]
+  }
+}

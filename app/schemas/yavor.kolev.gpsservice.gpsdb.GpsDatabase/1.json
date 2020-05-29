@@ -1,0 +1,141 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "8fd4e162c4686c1c8d7cf4a614481510",
+    "entities": [
+      {
+        "tableName": "distance",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`distance_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `distance_content` TEXT, `date` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "distance_id",
+            "columnName": "distance_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "distance",
+            "columnName": "distance_content",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "distance_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "speed",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`speed_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `speed_content` TEXT, `date` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "speed_id",
+            "columnName": "speed_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speed",
+            "columnName": "speed_content",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "speed_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "altitude_min",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`altitudeMin_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `altitude_min_content` TEXT, `date` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "altitudeMin_id",
+            "columnName": "altitudeMin_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "altitudeMin",
+            "columnName": "altitude_min_content",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "altitudeMin_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "altitude_max",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`altitudeMax_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `altitude_max_content` TEXT, `date` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "altitudeMax_id",
+            "columnName": "altitudeMax_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "altitudeMax",
+            "columnName": "altitude_max_content",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "altitudeMax_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"8fd4e162c4686c1c8d7cf4a614481510\")"
+    ]
+  }
+}
