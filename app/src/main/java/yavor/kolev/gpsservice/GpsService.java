@@ -62,7 +62,7 @@ public class GpsService extends Service {
 
                 accuracy = location.getAccuracy();
 
-                if ((accuracy > 0.0f) && (accuracy <= 10.0f)){
+                if ((accuracy > 0.0f) && (accuracy <= 15.0f)){
                     // Distance calculation
                     if (!firstStart){
                         firstStart = true;
