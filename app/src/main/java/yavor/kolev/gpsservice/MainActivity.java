@@ -501,14 +501,20 @@ public class MainActivity extends AppCompatActivity {
                     gpxFileWriterBody();
                 }
 
+                // Shows zeros, for Latitude, if it is with less than 6 digits in the decimal part
                 if (gpsPassedData[0].length() == 8){
                     gpsPassedData[0] = gpsPassedData[0] + '0';
+                } else if (gpsPassedData[0].length() == 7){
+                    gpsPassedData[0] = gpsPassedData[0] + '0' + '0';
                 } else mLatitudeTextView.append(gpsPassedData[0] + " - " + date +"\n");
 
                 mLatitudeTextView.setMovementMethod(new ScrollingMovementMethod());
 
+                // Shows zeros, for Longitude, if it is with less than 6 digits in the decimal part
                 if (gpsPassedData[1].length() == 8){
                     gpsPassedData[1] = gpsPassedData[0] + '0';
+                } else if (gpsPassedData[1].length() == 7){
+                    gpsPassedData[1] = gpsPassedData[0] + '0' + '0';
                 } else mLongitudeTextView.append(gpsPassedData[1] + " - " + date +"\n");
 
                 mLongitudeTextView.setMovementMethod(new ScrollingMovementMethod());
