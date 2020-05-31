@@ -3,7 +3,7 @@ Android Development Java Education example GpsService application
 
 Android Studio Java Gps Service offline application Android [4 - 10](Tested on 10)
 
-    Exports the trip to the Gpx format file with Latitude and Longitude(automatically on stop). In a proper way for GPS Visualizers // https://www.gpsvisualizer.com/
+    Exports the trip(or point if you no moove) to the Gpx, file with Latitude and Longitude(automatically on stop). In a proper format for GPS Visualizers, for example https://www.gpsvisualizer.com/
     Displays for the current trip: Lists Latitude and Longitude, Speed and Altitude
     Displays for the current trip: Distance, Maximum Speed, Altitude Maximum/Minimum
     Keeps in database Total Distance, Total Maximum Speed, Total Altitude Minimum and Maximum, when you finish.
