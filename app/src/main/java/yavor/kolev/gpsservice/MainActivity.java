@@ -512,9 +512,9 @@ public class MainActivity extends AppCompatActivity {
 
                 // Shows zeros, for Longitude, if it is with less than 6 digits in the decimal part
                 if (gpsPassedData[1].length() == 8){
-                    gpsPassedData[1] = gpsPassedData[0] + '0';
+                    gpsPassedData[1] = gpsPassedData[1] + '0';
                 } else if (gpsPassedData[1].length() == 7){
-                    gpsPassedData[1] = gpsPassedData[0] + '0' + '0';
+                    gpsPassedData[1] = gpsPassedData[1] + '0' + '0';
                 } else mLongitudeTextView.append(gpsPassedData[1] + " - " + date +"\n");
 
                 mLongitudeTextView.setMovementMethod(new ScrollingMovementMethod());
