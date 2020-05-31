@@ -1,12 +1,13 @@
 # GpsService
 Android Development Java Education example GpsService application
 
-Android Studio Java Gps Service offline application Android [4 - 10](Tested on 10)
+Android Studio Java Gps Service offline application(GPX tracker++) Android [4 - 10](Tested on 10)
 
 Features:
     Automatically when you press the button STOP (available only after START):
       Exports to the GPX format in a file the trip or point if you do not move;
-        In a proper format for any GPS visualizers, for example https://www.gpsvisualizer.com/;
+         In a proper format for any GPS devices which support GPX format or visualizers.
+         For example online visualizer: https://www.gpsvisualizer.com/;
       Saves the file with the current date and time or any name you want or able to refuse the save;
       Visualize charts with Speed and Altitude for each meter from the current trip;
     Shows for the current trip, for each meter LISTS with: 
