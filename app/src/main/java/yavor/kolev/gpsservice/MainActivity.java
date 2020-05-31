@@ -473,7 +473,7 @@ public class MainActivity extends AppCompatActivity {
 
             if((Float.parseFloat(gpsPassedData[0]) != 0.0f) || (Float.parseFloat(gpsPassedData[1]) != 0.0f)){
 
-                if ((Float.parseFloat(gpsPassedData[4]) != 0.0f) && (Float.parseFloat(gpsPassedData[4]) != 0.0f)){
+                if ((Float.parseFloat(gpsPassedData[3]) != 0.0f) && (Float.parseFloat(gpsPassedData[4]) != 0.0f)){
                     // To use on stop to create charts speed and altitude
                     // Each meters(updates) counter
                     tripInMeters++;
