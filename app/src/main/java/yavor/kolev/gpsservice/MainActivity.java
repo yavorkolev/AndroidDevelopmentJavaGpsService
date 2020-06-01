@@ -124,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("#--Method----MainActivity-onCreate");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -288,34 +287,52 @@ public class MainActivity extends AppCompatActivity {
             }
 
             Speed speedDb = activityReference.get().gpsDatabase.getSpeedDao().getSpeed();
+            Float totalSpeedFloat = Float.parseFloat(speed.getSpeed());
+            //System.out.println("#--totalSpeedFloat" + totalSpeedFloat);
             if(speedDb == null){
                 long j = activityReference.get().gpsDatabase.getSpeedDao().insertSpeed(speed);
                 speed.setSpeed_id(j);
-            }else if (tmpSpeedMax != 0.0f){
+            }else if (tmpSpeedMax != 0.0f && totalSpeedFloat == 0.0f){
+                speed = speedDb;
+                speed.setSpeed(String.valueOf(tmpSpeedMax));
+                activityReference.get().gpsDatabase.getSpeedDao().updateSpeed(speed);
+            } else if (tmpSpeedMax != 0.0f && tmpSpeedMax > totalSpeedFloat){
                 speed = speedDb;
                 speed.setSpeed(String.valueOf(tmpSpeedMax));
                 activityReference.get().gpsDatabase.getSpeedDao().updateSpeed(speed);
             }
 
+
             AltitudeMin altitudeMinDb = activityReference.get().gpsDatabase.getAltitudeMinDao().getAltitudeMin();
+            Float totalAltitudeMinFloat = Float.parseFloat(altitudeMin.getAltitudeMin());
             if(altitudeMinDb == null){
                 long j = activityReference.get().gpsDatabase.getAltitudeMinDao().insertAltitudeMin(altitudeMin);
                 altitudeMin.setAltitudeMin_id(j);
-            }else if (minAltitude != 0.0f){
+            }else if (minAltitude != 0.0f && totalAltitudeMinFloat == 0.0){
+                altitudeMin = altitudeMinDb;
+                altitudeMin.setAltitudeMin(String.valueOf(minAltitude));
+                activityReference.get().gpsDatabase.getAltitudeMinDao().updateAltitudeMin(altitudeMin);
+            } else if (minAltitude != 0.0f && minAltitude < totalAltitudeMinFloat){
                 altitudeMin = altitudeMinDb;
                 altitudeMin.setAltitudeMin(String.valueOf(minAltitude));
                 activityReference.get().gpsDatabase.getAltitudeMinDao().updateAltitudeMin(altitudeMin);
             }
 
             AltitudeMax altitudeMaxDb = activityReference.get().gpsDatabase.getAltitudeMaxDao().getAltitudeMax();
+            Float totalAltitudeMaxFloat = Float.parseFloat(altitudeMax.getAltitudeMax());
             if(altitudeMaxDb == null){
                 long j = activityReference.get().gpsDatabase.getAltitudeMaxDao().insertAltitudeMax(altitudeMax);
                 altitudeMax.setAltitudeMax_id(j);
-            }else if (maxAltitude != 0.0f){
+            }else if (maxAltitude != 0.0f && totalAltitudeMaxFloat == 0.0){
+                altitudeMax = altitudeMaxDb;
+                altitudeMax.setAltitudeMax(String.valueOf(maxAltitude));
+                activityReference.get().gpsDatabase.getAltitudeMaxDao().updateAltitudeMax(altitudeMax);
+            } else if (maxAltitude != 0.0f && maxAltitude > totalAltitudeMaxFloat){
                 altitudeMax = altitudeMaxDb;
                 altitudeMax.setAltitudeMax(String.valueOf(maxAltitude));
                 activityReference.get().gpsDatabase.getAltitudeMaxDao().updateAltitudeMax(altitudeMax);
             }
+
             return true;
         }
     }

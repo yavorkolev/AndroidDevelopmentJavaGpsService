@@ -82,16 +82,19 @@ public class GpsService extends Service {
 
                     gpsData[0] = String.valueOf((round(location.getLatitude() * 1000000.0) / 1000000.0));
                     gpsData[1] = String.valueOf((round(location.getLongitude() * 1000000.0) / 1000000.0));
+
                     // It's rounded in main activity depending of the value up or above 1000
                     gpsData[2] = String.valueOf(distanceTrip);
+
                     // From meter per second to kilometer per hour, float
                     gpsData[3] = String.valueOf(round((location.getSpeed()*3.6) * 10.0) / 10.0);
+
                     // Double if available, in meters above the WGS 84 reference ellipsoid.
                     // Add hard codded correction for bulgaria for test - 50 meters!
-                    if (location.getAltitude() > 50.0f){
-                        gpsData[4] = String.valueOf((round(location.getAltitude() * 10.0) / 10.0) - 50);
+                    if (location.getAltitude() > 50.0){
+                        gpsData[4] = String.valueOf((round((location.getAltitude() - 50.0 )* 10.0) / 10.0));
                     }
-                    else gpsData[4] = String.valueOf((round(location.getAltitude() * 10.0) / 10.0));
+                    else gpsData[4] = String.valueOf((location.getAltitude() * 10.0) / 10.0);
 
                     serviceDataIntentCreation();
 
