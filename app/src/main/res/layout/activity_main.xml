@@ -10,11 +10,28 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
+
+    <View
+        android:id="@+id/latitudeTopLine"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@android:color/black"
+        app:layout_constraintTop_toTopOf="@+id/labelLatitude"  />
+
+    <View
+        android:id="@+id/topVerticalLine"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:gravity="top"
+        app:layout_constraintLeft_toLeftOf="@+id/labelLatitude"
+        app:layout_constraintTop_toBottomOf= "@+id/latitudeTopLine"/>
+
     <TextView
         android:id="@+id/labelLatitude"
-        android:layout_width="85dp"
+        android:layout_width="93dp"
         android:layout_height="40dp"
-        android:gravity="bottom|right"
+        android:gravity="bottom|right|center_horizontal"
         android:text="@string/latitude"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +39,7 @@
 
     <TextView
         android:id="@+id/latitude_textview"
-        android:layout_width="308dp"
+        android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginTop="2dp"
         android:ellipsize="start"
@@ -34,6 +51,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        android:id="@+id/distanceTotalEndVerticalLine"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:gravity="bottom"
+        app:layout_constraintRight_toRightOf="@+id/latitudeTopLine"
+        app:layout_constraintTop_toBottomOf="@+id/latitudeTopLine" />
+
+
+    <View
         android:id="@+id/latitudeLongitudeLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -42,9 +69,9 @@
 
     <TextView
         android:id="@+id/labelLongitude"
-        android:layout_width="85dp"
+        android:layout_width="93dp"
         android:layout_height="40dp"
-        android:gravity="bottom|right|center_vertical"
+        android:gravity="bottom|right|center_horizontal|center_vertical"
         android:text="@string/longitude"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +79,7 @@
 
     <TextView
         android:id="@+id/longitude_textview"
-        android:layout_width="308dp"
+        android:layout_width="300dp"
         android:layout_height="40dp"
         android:ellipsize="start"
         android:gravity="bottom"
@@ -75,6 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="14dp"
         android:gravity="right|center_vertical"
+        android:paddingLeft="3dp"
         android:text="@string/distance"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +121,7 @@
         app:layout_constraintTop_toBottomOf="@+id/longitude_textview" />
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/distanceTripTotalLine"
         android:layout_width="1dp"
         android:layout_height="14dp"
         android:background="@android:color/black"
@@ -110,7 +138,7 @@
         android:paddingTop="1dp"
         android:text="@string/distanceTotal"
         android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintStart_toEndOf="@+id/distanceTripTotalLine"
         app:layout_constraintTop_toBottomOf="@+id/longitude_textview" />
 
     <TextView
@@ -124,6 +152,7 @@
         app:layout_constraintStart_toEndOf="@+id/labelDistanceTotal"
         app:layout_constraintTop_toBottomOf="@+id/longitude_textview" />
 
+
     <View
         android:id="@+id/distanceSpeedLine"
         android:layout_width="match_parent"
@@ -133,27 +162,28 @@
         app:layout_constraintTop_toBottomOf="@+id/distanceTotal_textview"
         tools:layout_editor_absoluteX="1dp" />
 
-        <TextView
-            android:id="@+id/labelSpeed"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:gravity="bottom|right|center_vertical"
-            android:text="@string/speed"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelDistance" />
+    <TextView
+        android:id="@+id/labelSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="bottom|right|center_vertical"
+        android:paddingLeft="3dp"
+        android:text="@string/speed"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelDistance" />
 
-        <TextView
-            android:id="@+id/speed_textview"
-            android:layout_width="55dp"
-            android:layout_height="40dp"
-            android:ellipsize="start"
-            android:gravity="bottom"
-            android:maxLines="10000"
-            android:scrollbars="vertical"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/labelSpeed"
-            app:layout_constraintTop_toBottomOf="@+id/distance_textview" />
+    <TextView
+        android:id="@+id/speed_textview"
+        android:layout_width="65dp"
+        android:layout_height="40dp"
+        android:ellipsize="start"
+        android:gravity="bottom"
+        android:maxLines="10000"
+        android:scrollbars="vertical"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/labelSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/distance_textview" />
 
         <View
             android:layout_width="1dp"
@@ -173,23 +203,23 @@
             app:layout_constraintStart_toEndOf="@+id/speed_textview"
             app:layout_constraintTop_toBottomOf="@+id/labelDistanceTotal" />
 
-        <TextView
-            android:id="@+id/speedMax_textview"
-            android:layout_width="58dp"
-            android:layout_height="20dp"
-            android:ellipsize="start"
-            android:gravity="center_vertical"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/labelSpeedMax"
-            app:layout_constraintTop_toBottomOf="@+id/distanceTotal_textview" />
+    <TextView
+        android:id="@+id/speedMax_textview"
+        android:layout_width="68dp"
+        android:layout_height="20dp"
+        android:ellipsize="start"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/labelSpeedMax"
+        app:layout_constraintTop_toBottomOf="@+id/distanceTotal_textview" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@android:color/holo_green_light"
-            app:layout_constraintStart_toEndOf="@+id/speed_textview"
-            app:layout_constraintTop_toBottomOf="@+id/speedMax_textview" />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@android:color/holo_green_light"
+        app:layout_constraintStart_toEndOf="@+id/speed_textview"
+        app:layout_constraintTop_toBottomOf="@+id/speedMax_textview" />
 
         <TextView
             android:id="@+id/labelSpeedMaxTotal"
@@ -202,16 +232,16 @@
             app:layout_constraintStart_toEndOf="@+id/speed_textview"
             app:layout_constraintTop_toBottomOf="@+id/labelSpeedMax" />
 
-        <TextView
-            android:id="@+id/speedMaxTotal_textview"
-            android:layout_width="58dp"
-            android:layout_height="20dp"
-            android:ellipsize="start"
-            android:gravity="center_vertical"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/labelSpeedMaxTotal"
-            app:layout_constraintTop_toBottomOf="@+id/speedMax_textview" />
+    <TextView
+        android:id="@+id/speedMaxTotal_textview"
+        android:layout_width="68dp"
+        android:layout_height="20dp"
+        android:ellipsize="start"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/labelSpeedMaxTotal"
+        app:layout_constraintTop_toBottomOf="@+id/speedMax_textview" />
 
         <View
             android:id="@+id/speedAltitudeLine"
@@ -220,15 +250,16 @@
             android:background="@android:color/black"
             app:layout_constraintTop_toBottomOf="@+id/speedMaxTotal_textview" />
 
-        <TextView
-            android:id="@+id/labelAltitude"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:gravity="bottom|right|center_horizontal|center_vertical"
-            android:text="@string/altitude"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelSpeed" />
+    <TextView
+        android:id="@+id/labelAltitude"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="bottom|right|center_horizontal|center_vertical"
+        android:paddingLeft="3dp"
+        android:text="@string/altitude"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelSpeed" />
 
         <TextView
             android:id="@+id/altitude_textview"
@@ -326,16 +357,16 @@
             app:layout_constraintStart_toEndOf="@+id/altitudeMin_textview"
             app:layout_constraintTop_toBottomOf="@+id/speedMaxTotal_textview" />
 
-        <TextView
-            android:id="@+id/altitudeMinTotal_textview"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:ellipsize="start"
-            android:gravity="center_vertical"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/labelAltitudeMinTotal"
-            app:layout_constraintTop_toBottomOf="@+id/speedMaxTotal_textview" />
+    <TextView
+        android:id="@+id/altitudeMinTotal_textview"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:ellipsize="start"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/labelAltitudeMinTotal"
+        app:layout_constraintTop_toBottomOf="@+id/speedMaxTotal_textview" />
 
         <TextView
             android:id="@+id/labelAltitudeMaxTotal"
@@ -347,16 +378,16 @@
             app:layout_constraintStart_toEndOf="@+id/altitudeMax_textview"
             app:layout_constraintTop_toBottomOf="@+id/labelAltitudeMinTotal" />
 
-        <TextView
-            android:id="@+id/altitudeMaxTotal_textview"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:ellipsize="start"
-            android:gravity="center_vertical"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/labelAltitudeMaxTotal"
-            app:layout_constraintTop_toBottomOf="@+id/altitudeMinTotal_textview" />
+    <TextView
+        android:id="@+id/altitudeMaxTotal_textview"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:ellipsize="start"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/labelAltitudeMaxTotal"
+        app:layout_constraintTop_toBottomOf="@+id/altitudeMinTotal_textview" />
 
         <View
             android:layout_width="match_parent"
@@ -390,23 +421,23 @@
             android:background="@android:color/black"
             app:layout_constraintTop_toBottomOf="@+id/chartAltitude" />
 
-        <Button
-            android:id="@+id/StartButtonID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
-            android:gravity="center_horizontal|center_vertical"
-            android:onClick="startService"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="5dp"
-            android:text="@string/START_gps_service"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chartAltitude"
-            app:layout_constraintVertical_bias="0.433" />
+    <Button
+        android:id="@+id/StartButtonID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="startService"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/START_gps_service"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chartAltitude"
+        app:layout_constraintVertical_bias="0.4" />
 
         <Button
             android:id="@+id/stopExitButton"
@@ -425,5 +456,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chartAltitude"
             app:layout_constraintVertical_bias="0.4" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

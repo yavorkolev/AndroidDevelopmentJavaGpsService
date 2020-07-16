@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         int counter = 0;
 
         while (counter < numMeters) {
-            meters[counter] = counter + "m.";
+            meters[counter] = counter + "m";
 
             entries.add(new Entry(counter, listSpeeds.get(counter)));
             counter++;
@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
         int counter = 0;
 
         while (counter < numMeters) {
-            meters[counter] = counter + "m.";
+            meters[counter] = counter + "m";
 
             entries.add(new Entry(counter, listAltitudes.get(counter)));
             counter++;
@@ -377,10 +377,10 @@ public class MainActivity extends AppCompatActivity {
             Float totalDistanceFloat = Float.parseFloat(distanceDb.getDistance());
             if (totalDistanceFloat <= 1000.0f){
                 distance = distanceDb;
-                distanceTotalTextView.setText((round(totalDistanceFloat * 10.0) / 10.0) + "m.");
+                distanceTotalTextView.setText((round(totalDistanceFloat * 10.0) / 10.0) + "m");
             } else if (totalDistanceFloat > 1000.0f){
                 totalDistanceFloat = totalDistanceFloat / 1000.0f;
-                distanceTotalTextView.setText((round(totalDistanceFloat * 1000.000) / 1000.000) + "km.");
+                distanceTotalTextView.setText((round(totalDistanceFloat * 1000.000) / 1000.000) + "km");
             }
         }
     }
@@ -435,7 +435,7 @@ public class MainActivity extends AppCompatActivity {
 
             AltitudeMin altitudeMinDb = activityReference.get().gpsDatabase.getAltitudeMinDao().getAltitudeMin();
             altitudeMin = altitudeMinDb;
-            altitudeMinTotalTextView.setText(altitudeMin.getAltitudeMin()+ "m.");
+            altitudeMinTotalTextView.setText(altitudeMin.getAltitudeMin()+ "m");
         }
     }
 
@@ -462,7 +462,7 @@ public class MainActivity extends AppCompatActivity {
 
             AltitudeMax altitudeMaxDb = activityReference.get().gpsDatabase.getAltitudeMaxDao().getAltitudeMax();
             altitudeMax = altitudeMaxDb;
-            altitudeMaxTotalTextView.setText(altitudeMax.getAltitudeMax()+ "m.");
+            altitudeMaxTotalTextView.setText(altitudeMax.getAltitudeMax()+ "m");
         }
     }
 
@@ -559,17 +559,17 @@ public class MainActivity extends AppCompatActivity {
                 // Only first time set min/maxAltitude to the current
                 if ((!isFirstAltitude) && (Float.parseFloat(gpsPassedData[4]) != 0.0f)){
                     minAltitude = Float.parseFloat(gpsPassedData[4]);
-                    altitudeMinTextView.setText(gpsPassedData[4] + "m."+"\n");
+                    altitudeMinTextView.setText(gpsPassedData[4] + "m"+"\n");
                     maxAltitude = Float.parseFloat(gpsPassedData[4]);
-                    altitudeMaxTextView.setText(gpsPassedData[4] + "m."+"\n");
+                    altitudeMaxTextView.setText(gpsPassedData[4] + "m"+"\n");
                     isFirstAltitude = true;
                 } else if ((isFirstAltitude) && (Float.parseFloat(gpsPassedData[4]) != 0.0f)){
                     if ((Float.parseFloat(gpsPassedData[4]) <= minAltitude)){
-                        altitudeMinTextView.setText(gpsPassedData[4] + "m."+"\n");
+                        altitudeMinTextView.setText(gpsPassedData[4] + "m"+"\n");
                         minAltitude = (Float.parseFloat(gpsPassedData[4]));
                     }
                     if ((Float.parseFloat(gpsPassedData[4]) > maxAltitude)){
-                        altitudeMaxTextView.setText(gpsPassedData[4] + "m."+"\n");
+                        altitudeMaxTextView.setText(gpsPassedData[4] + "m"+"\n");
                         maxAltitude = (Float.parseFloat(gpsPassedData[4]));
                     }
                 }
