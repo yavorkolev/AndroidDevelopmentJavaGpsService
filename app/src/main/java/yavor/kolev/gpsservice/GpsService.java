@@ -9,7 +9,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Binder;
-import android.os.Bundle;;
+import android.os.Bundle;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
@@ -22,10 +22,13 @@ import static java.lang.Math.round;
 
 public class GpsService extends Service {
 
+    final static String GET_GPS_DISABLED = "GET_GPS_DISABLED";
+
+    Intent serviceDataIntent = new Intent();
+    final static String GET_GPS_DATA = "GET_GPS_DATA";
+
     float accuracy;
     private IBinder mBinder = new MyBinder();
-    final static String GET_GPS_DATA = "GET_GPS_DATA";
-    final static String GET_GPS_DISABLED = "GET_GPS_DISABLED";
     LocationListener listener;
     String[] gpsData = new String[5];
     float distanceTrip;
@@ -39,14 +42,12 @@ public class GpsService extends Service {
 
     public class MyBinder extends Binder {
         GpsService getService() {
-
             return GpsService.this;
         }
     }
 
     @Override
-    public void onCreate() { ;
-
+    public void onCreate() {
         super.onCreate();
     }
 
@@ -63,7 +64,7 @@ public class GpsService extends Service {
                 accuracy = location.getAccuracy();
 
                 if ((accuracy > 0.0f) && (accuracy <= 20.0f)){
-                    // Distance calculation
+                    // First time get coordinates(locationA) without distance calculation, still no locationB for distance calculation!
                     if (!firstStart){
                         firstStart = true;
                         locationA = new Location(location);
@@ -86,6 +87,7 @@ public class GpsService extends Service {
                     // It's rounded in main activity depending of the value up or above 1000
                     gpsData[2] = String.valueOf(distanceTrip);
 
+                    // Get the speed if it is available, in meters/second over ground.
                     // From meter per second to kilometer per hour, float
                     gpsData[3] = String.valueOf(round((location.getSpeed()*3.6) * 10.0) / 10.0);
 
@@ -94,7 +96,9 @@ public class GpsService extends Service {
                     if (location.getAltitude() > 50.0){
                         gpsData[4] = String.valueOf((round((location.getAltitude() - 50.0 )* 10.0) / 10.0));
                     }
-                    else gpsData[4] = String.valueOf((location.getAltitude() * 10.0) / 10.0);
+                    else {
+                        gpsData[4] = String.valueOf((location.getAltitude() * 10.0) / 10.0);
+                    }
 
                     serviceDataIntentCreation();
 
@@ -120,15 +124,20 @@ public class GpsService extends Service {
             @Override
             public void onProviderDisabled(String s) {
 
-                Intent intent = new Intent();
-                intent.setAction(GET_GPS_DISABLED);
-                sendBroadcast(intent);
+                Intent onProviderDisabledIntent = new Intent();
+                onProviderDisabledIntent.setAction(GET_GPS_DISABLED);
+                sendBroadcast(onProviderDisabledIntent);
 
                 locationManager.removeUpdates(listener);
             }
         };
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, listener);
+        // If you set minTime to 0, it will be called once when it first receives a location update,
+        // then it won't be called until you change your position in minDistance meters.
+        // One update only if you don't move at least 1 meter: minTime: 0, minDistance: 1
+        // every 1 seconds or 1 meters:  minTime: 1000, minDistance: 1
+        // every 1 seconds whether or not there is movement: minTime: 1000, minDistance: 0
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, listener);
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("GPS Service")
@@ -142,10 +151,8 @@ public class GpsService extends Service {
     }
 
     private void serviceDataIntentCreation(){
-
-        Intent intent = new Intent();
-        intent.setAction(GET_GPS_DATA);
-        sendBroadcast(intent);
+        serviceDataIntent.setAction(GET_GPS_DATA);
+        sendBroadcast(serviceDataIntent);
     }
 
     public String[] passGpsData() {
@@ -155,7 +162,6 @@ public class GpsService extends Service {
 
     @Override
     public void onDestroy() {
-
         locationManager.removeUpdates(listener);
         super.onDestroy();
     }
@@ -163,7 +169,6 @@ public class GpsService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-
         return mBinder;
     }
 }

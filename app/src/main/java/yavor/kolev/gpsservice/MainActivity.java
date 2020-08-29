@@ -288,7 +288,6 @@ public class MainActivity extends AppCompatActivity {
 
             Speed speedDb = activityReference.get().gpsDatabase.getSpeedDao().getSpeed();
             Float totalSpeedFloat = Float.parseFloat(speed.getSpeed());
-            //System.out.println("#--totalSpeedFloat" + totalSpeedFloat);
             if(speedDb == null){
                 long j = activityReference.get().gpsDatabase.getSpeedDao().insertSpeed(speed);
                 speed.setSpeed_id(j);
@@ -539,10 +538,10 @@ public class MainActivity extends AppCompatActivity {
                 distanceTrip = gpsPassedData[2];
                 Float distanceTripFloat = Float.parseFloat(distanceTrip);
                 if (distanceTripFloat <= 1000.0f){
-                    distanceTextView.setText((round(distanceTripFloat * 10.0) / 10.0) + "m.");
+                    distanceTextView.setText((round(distanceTripFloat * 10.0) / 10.0) + "m");
                 } else if (distanceTripFloat > 1000.0f){
                     distanceTripFloat = distanceTripFloat / 1000.0f;
-                    distanceTextView.setText((round(distanceTripFloat * 1000.000) / 1000.000) + "km.");
+                    distanceTextView.setText((round(distanceTripFloat * 1000.000) / 1000.000) + "km");
                 }
 
 
@@ -552,7 +551,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (Float.parseFloat(gpsPassedData[4]) != 0.0f){
-                    altitudeTextView.append(gpsPassedData[4] + "m."+"\n");
+                    altitudeTextView.append(gpsPassedData[4] + "m"+"\n");
                     altitudeTextView.setMovementMethod(new ScrollingMovementMethod());
                 }
 
@@ -587,8 +586,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context arg0, Intent arg1) {
-            System.out.println("#--Method----MainActivity-onReceive-GpsDisabledReceiver");
-
             stopGpsService();
         }
     }
