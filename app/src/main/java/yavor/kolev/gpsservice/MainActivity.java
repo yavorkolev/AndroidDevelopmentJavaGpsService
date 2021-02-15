@@ -60,6 +60,8 @@ import static java.lang.Math.round;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Test
+
     private GpsDatabase gpsDatabase;
 
     private Distance distance;
