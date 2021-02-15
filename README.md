@@ -1,3 +1,4 @@
+TODO[15th-02-2021] Fix for a very serious architectural problem, about data storing/restoring when the system kill the activity!!!
 # GpsService
 Android Development Java Education example GpsService application
 
